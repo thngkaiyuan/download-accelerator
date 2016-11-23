@@ -11,10 +11,13 @@ conns = 8
 tmp_dir = '/tmp/'
 dl_dir = '/home/ubuntu/'
 
+has_errors = False
+
 def get_filename_from_url(url):
 	return urlparse.urlsplit(url).path.split('/')[-1]
 
 def download(url, start, this_chunk_size, part):
+	global has_errors
 	r = requests.get(url, headers={'Range':'bytes=%d-%d' % (start, start + this_chunk_size-1)}, stream=True)
 	filename = get_filename_from_url(url) + '_%d' % part
 	filepath = os.path.join(tmp_dir, filename)
@@ -23,7 +26,12 @@ def download(url, start, this_chunk_size, part):
 		for chunk in r.iter_content(chunk_size=1024):
 			if chunk:
 				f.write(chunk)
-	print 'Downloaded %s' % filepath
+	downloaded_size = os.path.getsize(filepath)
+	if downloaded_size != this_chunk_size:
+		print '%s was not completely downloaded' % filepath
+		has_errors = True
+	else:
+		print 'Downloaded %s' % filepath
 
 # check if URL accept ranges
 r = requests.head(url)
@@ -45,12 +53,16 @@ for start in range(0, size, chunk_size):
 	t.daemon = True
 	t.start()
 
-# merge into a single file
 while threading.active_count() > 1:
 	time.sleep(0.1)
 
+if has_errors:
+	print 'An error was encountered in the downloading process. Quitting...'
+	quit()
+
 print 'All parts downloaded. Joining files...'
 
+# merge into a single file
 filename = get_filename_from_url(url)
 filepath = os.path.join(dl_dir, filename)
 with open(filepath, 'wb') as f:
