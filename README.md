@@ -8,25 +8,25 @@ A really simple download accelerator written in Python that uses [multi-part dow
   3. Your final download directory (e.g. `dl_dir = '/home/ubuntu/'`, to store the combined file)
 2. Pass your URL as a parameter to the script as follows:
 ```
-$ python dl_man.py http://download.thinkbroadband.com/5MB.zip
-Downloading /tmp/5MB.zip_7
-Downloading /tmp/5MB.zip_3
-Downloading /tmp/5MB.zip_2
-Downloading /tmp/5MB.zip_1
-Downloading /tmp/5MB.zip_4
-Downloading /tmp/5MB.zip_0
-Downloading /tmp/5MB.zip_5
-Downloading /tmp/5MB.zip_6
-Downloaded /tmp/5MB.zip_7
-Downloaded /tmp/5MB.zip_2
-Downloaded /tmp/5MB.zip_3
-Downloaded /tmp/5MB.zip_0
-Downloaded /tmp/5MB.zip_5
-Downloaded /tmp/5MB.zip_1
-Downloaded /tmp/5MB.zip_6
-Downloaded /tmp/5MB.zip_4
+$ python dlman.py http://download.thinkbroadband.com/1GB.zip
+Downloading /tmp/1GB.zip_6
+Downloading /tmp/1GB.zip_1
+Downloading /tmp/1GB.zip_7
+Downloading /tmp/1GB.zip_3
+Downloading /tmp/1GB.zip_0
+Downloading /tmp/1GB.zip_2
+Downloading /tmp/1GB.zip_4
+Downloading /tmp/1GB.zip_5
+Downloaded /tmp/1GB.zip_2
+Downloaded /tmp/1GB.zip_3
+Downloaded /tmp/1GB.zip_5
+Downloaded /tmp/1GB.zip_0
+Downloaded /tmp/1GB.zip_4
+Downloaded /tmp/1GB.zip_6
+Downloaded /tmp/1GB.zip_7
+Downloaded /tmp/1GB.zip_1
 All parts downloaded. Joining files...
-Joining complete. File saved in /home/ubuntu/5MB.zip
+Joining complete. File saved in /home/ubuntu/1GB.zip
 ```
 
 Enjoy!
