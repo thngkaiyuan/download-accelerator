@@ -18,6 +18,8 @@ def get_filename_from_url(url):
 
 def download(url, start, this_chunk_size, part):
 	global has_errors
+
+	# first download attempt
 	r = requests.get(url, headers={'Range':'bytes=%d-%d' % (start, start + this_chunk_size-1)}, stream=True)
 	filename = get_filename_from_url(url) + '_%d' % part
 	filepath = os.path.join(tmp_dir, filename)
@@ -26,6 +28,8 @@ def download(url, start, this_chunk_size, part):
 		for chunk in r.iter_content(chunk_size=1024):
 			if chunk:
 				f.write(chunk)
+
+	# in case the connection was reset before the download completed
 	while True:
 		downloaded_size = os.path.getsize(filepath)
 		if downloaded_size == this_chunk_size:
