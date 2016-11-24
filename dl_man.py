@@ -21,17 +21,21 @@ def download(url, start, this_chunk_size, part):
 	r = requests.get(url, headers={'Range':'bytes=%d-%d' % (start, start + this_chunk_size-1)}, stream=True)
 	filename = get_filename_from_url(url) + '_%d' % part
 	filepath = os.path.join(tmp_dir, filename)
-	print 'Downloading %s' % filepath
+	print 'Downloading part %d to %s' % (part+1, filepath)
 	with open(filepath, 'wb') as f:
 		for chunk in r.iter_content(chunk_size=1024):
 			if chunk:
 				f.write(chunk)
-	downloaded_size = os.path.getsize(filepath)
-	if downloaded_size != this_chunk_size:
-		print '%s was not completely downloaded' % filepath
-		has_errors = True
-	else:
-		print 'Downloaded %s' % filepath
+	while True:
+		downloaded_size = os.path.getsize(filepath)
+		if downloaded_size == this_chunk_size:
+			break
+		r = requests.get(url, headers={'Range':'bytes=%d-%d' % (start + downloaded_size, start + this_chunk_size-1)}, stream=True)
+		with open(filepath, 'ab') as f:
+			for chunk in r.iter_content(chunk_size=1024):
+				if chunk:
+					f.write(chunk)
+	print 'Downloaded part %d to %s' % (part+1, filepath)
 
 # check if URL accept ranges
 r = requests.head(url)
