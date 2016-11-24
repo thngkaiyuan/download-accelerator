@@ -1,5 +1,5 @@
 # Download Accelerator
-**Download Accelerator** is a really simple (and did anybody mention free??!!?) download accelerator written in Python that uses [multi-part downloading](https://www.quora.com/How-does-IDM-internet-download-manager-work) to speed up your downloads. It even supports unstable connections by continuing where it left off if your connection is reset at any point of time.
+**Download Accelerator** is a really simple (and did anybody mention free??!!?) download accelerator written in Python that uses [multi-part downloading](https://www.quora.com/How-does-IDM-internet-download-manager-work) to speed up your downloads. It even supports unstable connections by continuing where it left off if your connection is reset at any point of time. The only feature lacking is a real-time progress indicator but you don't really need it when your download is fast, right?
 
 ## Usage
 1. Configure in `dl_man.py`:
