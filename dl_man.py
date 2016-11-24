@@ -7,9 +7,10 @@ import requests
 from urllib2 import urlparse
 
 url = sys.argv[1]
-conns = 8
+default_conns = 8
 tmp_dir = '/tmp/'
 dl_dir = '/home/ubuntu/'
+conns = int(sys.argv[2]) if len(sys.argv) > 2 else default_conns
 
 has_errors = False
 
