@@ -9,22 +9,22 @@ A really simple download accelerator written in Python that uses [multi-part dow
 2. Pass your URL as a parameter to the script as follows:
 ```
 $ python dlman.py http://download.thinkbroadband.com/1GB.zip
-Downloading /tmp/1GB.zip_6
-Downloading /tmp/1GB.zip_1
-Downloading /tmp/1GB.zip_7
-Downloading /tmp/1GB.zip_3
-Downloading /tmp/1GB.zip_0
-Downloading /tmp/1GB.zip_2
-Downloading /tmp/1GB.zip_4
-Downloading /tmp/1GB.zip_5
-Downloaded /tmp/1GB.zip_2
-Downloaded /tmp/1GB.zip_3
-Downloaded /tmp/1GB.zip_5
-Downloaded /tmp/1GB.zip_0
-Downloaded /tmp/1GB.zip_4
-Downloaded /tmp/1GB.zip_6
-Downloaded /tmp/1GB.zip_7
-Downloaded /tmp/1GB.zip_1
+Downloading part 6 to /tmp/1GB.zip_5
+Downloading part 4 to /tmp/1GB.zip_3
+Downloading part 1 to /tmp/1GB.zip_0
+Downloading part 5 to /tmp/1GB.zip_4
+Downloading part 7 to /tmp/1GB.zip_6
+Downloading part 3 to /tmp/1GB.zip_2
+Downloading part 2 to /tmp/1GB.zip_1
+Downloading part 8 to /tmp/1GB.zip_7
+Downloaded part 6 to /tmp/1GB.zip_5
+Downloaded part 4 to /tmp/1GB.zip_3
+Downloaded part 5 to /tmp/1GB.zip_4
+Downloaded part 1 to /tmp/1GB.zip_0
+Downloaded part 7 to /tmp/1GB.zip_6
+Downloaded part 2 to /tmp/1GB.zip_1
+Downloaded part 8 to /tmp/1GB.zip_7
+Downloaded part 3 to /tmp/1GB.zip_2
 All parts downloaded. Joining files...
 Joining complete. File saved in /home/ubuntu/1GB.zip
 ```
